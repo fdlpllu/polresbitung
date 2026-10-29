@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLRES BITUNG - Portal Resmi Pelayanan & Sistem Informasi Publik</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        polri: {
+                            navy: '#0f172a',
+                            dark: '#0b1120',
+                            gold: '#eab308',
+                            goldhover: '#ca8a04',
+                            red: '#dc2626',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+        }
+        .navy-gradient {
+            background: linear-gradient(180deg, #0f172a 0%, #0b1120 100%);
+        }
+        .pulse-red {
+            animation: pulse-animation 1.8s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(220, 38, 38, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0px rgba(220, 38, 38, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-yellow-500 selection:text-black">
+
+    <!-- ============ TOP EMERGENCY BAR ============ -->
+    <div class="bg-red-700 text-white text-xs md:text-sm py-2 px-4 font-semibold flex justify-between items-center z-50 relative border-b border-red-800">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+                <span>LAYANAN DARURAT KEPOLISIAN 24 JAM</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:110" class="flex items-center gap-1.5 bg-white text-red-700 font-bold px-3 py-0.5 rounded-full shadow hover:bg-yellow-300 transition">
+                    <i class="fa-solid fa-phone"></i> CALL CENTER 110
+                </a>
+                <span class="hidden md:inline text-red-200">| Kota Bitung, Sulawesi Utara</span>
+            </div>
+        </div>
+    </div>
+
+  
+   <!-- ============ NAVIGATION BAR ============ -->
+    <nav class="sticky top-0 z-40 bg-polri-navy/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- Brand Logo & Title -->
+            <a href="#beranda" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-slate-800 border border-yellow-500/40 rounded-xl overflow-hidden shadow-md group-hover:border-yellow-400 transition">
+                    <img src="Logo.png" alt="Logo Polres" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base md:text-lg tracking-wider text-white leading-none">POLRES BITUNG</h1>
+                    <p class="text-[9px] md:text-[10px] text-yellow-400 font-medium tracking-widest uppercase">Polda Sulawesi Utara</p>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-4 font-medium text-xs xl:text-sm">
+                <a href="#beranda" class="hover:text-yellow-400 transition py-1 border-b-2 border-transparent hover:border-yellow-400">Beranda</a>
+                <a href="#profil" class="hover:text-yellow-400 transition py-1 border-b-2 border-transparent hover:border-yellow-400">Profil</a>
+                <a href="#layanan" class="hover:text-yellow-400 transition py-1 border-b-2 border-transparent hover:border-yellow-400">Layanan Publik</a>
+                <a href="#tarsius" class="text-yellow-400 font-bold hover:text-yellow-300 transition py-1 border-b-2 border-transparent hover:border-yellow-400"><i class="fa-solid fa-shield-halved mr-1"></i>Tarsius 86</a>
+                <a href="#polsek" class="hover:text-yellow-400 transition py-1 border-b-2 border-transparent hover:border-yellow-400">Polsek Jajaran</a>
+                <a href="#berita" class="hover:text-yellow-400 transition py-1 border-b-2 border-transparent hover:border-yellow-400">Berita</a>
+                <a href="#pengaduan" class="bg-yellow-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg hover:bg-yellow-400 transition shadow-md shadow-yellow-500/20">Pengaduan</a>
+            </div>
+
+            <!-- Right Controls / Auth Status -->
+            <div id="nav-auth-buttons" class="hidden lg:flex items-center gap-2">
+                <button onclick="bukaModalLoginAdmin()" class="px-3 py-1.5 rounded-lg border border-yellow-500/50 bg-yellow-500/10 text-yellow-400 text-xs font-bold hover:bg-yellow-500 hover:text-slate-950 transition">
+                    <i class="fa-solid fa-lock mr-1"></i> Login Admin
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-slate-300 hover:text-white p-2">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="beranda" class="relative min-h-[85vh] flex items-center justify-center navy-gradient border-b border-slate-800 overflow-hidden">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-4 py-16 relative z-10 text-center max-w-4xl">
+            <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-yellow-500/40 text-yellow-400 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 shadow-lg backdrop-blur">
+                <i class="fa-solid fa-certificate"></i> POLRI PRESISI: PREDIKTIF - RESPONSIF - TRANSPARANSI BERKEADILAN
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 leading-tight">
+                MEMELIHARA KAMTIBMAS & <span class="text-transparent bg-clip-text gold-gradient">PELAYANAN MASYARAKAT</span>
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-lg mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+                Selamat datang di portal pelayanan resmi Kepolisian Resor Bitung. Kami siap memberikan pelayanan prima, transparan, dan cepat untuk seluruh warga Kota Bitung.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#pengaduan" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-yellow-500/20 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-pen-to-square"></i> Buat Laporan / Pengaduan
+                </a>
+                <a href="tel:110" class="bg-red-600 hover:bg-red-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-red-600/30 flex items-center gap-2 pulse-red transition">
+                    <i class="fa-solid fa-phone-volume"></i> Panggilan Darurat 110
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 pt-8 border-t border-slate-800/80">
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-yellow-400 text-2xl font-extrabold">24/7</h4>
+                    <p class="text-slate-400 text-xs">Pelayanan SPKT & Patroli</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-yellow-400 text-2xl font-extrabold">110</h4>
+                    <p class="text-slate-400 text-xs">Bebas Pulsa Darurat</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-yellow-400 text-2xl font-extrabold">Tarsius 86</h4>
+                    <p class="text-slate-400 text-xs">Tim Patroli Presisi</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-yellow-400 text-2xl font-extrabold">Kota Bitung</h4>
+                    <p class="text-slate-400 text-xs">Wilayah Hukum Utama</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ============ PROFIL & KAPOLRES SECTION ============ -->
+    <section id="profil" class="py-20 bg-slate-950 border-b border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-yellow-400 text-xs font-bold tracking-widest uppercase">Mengenal Lebih Dekat</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Profil & Komitmen Polres Bitung</h2>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- PERUBAHAN UTAMA: Ditambahkan justify-center agar elemen berada di tengah -->
+            <div class="grid md:grid-cols-12 gap-8 items-center justify-center max-w-5xl mx-auto">
+                <!-- Kapolres Card (Dibuat agar posisinya center) -->
+                <div class="md:col-span-5 lg:col-span-5 flex justify-center">
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-yellow-500/30 text-center shadow-xl relative overflow-hidden group w-full max-w-sm">
+                        <div class="absolute top-0 right-0 bg-yellow-500 text-slate-950 text-[10px] font-bold px-3 py-1 rounded-bl-lg">KAPOLRES BITUNG</div>
+                        <div class="w-40 h-40 mx-auto rounded-full bg-slate-800 border-4 border-yellow-500/50 overflow-hidden mb-4 shadow-inner flex items-center justify-center">
+                            <img src="Kapolres.jpeg" alt="Kapolres Bitung" class="w-full h-full object-cover object-top">
+                        </div>
+                        <h3 class="text-lg font-bold text-white">AKBP Arie Sulistyo Nugroho, S.I.K., M.H.</h3>
+                        <p class="text-xs text-yellow-400 font-semibold mb-3">Kapolres Bitung</p>
+                        <p class="text-slate-400 text-xs italic leading-relaxed bg-slate-950 p-3 rounded-xl border border-slate-800">
+                            "Siap mewujudkan kamtibmas yang kondusif di Kota Bitung melalui pelayanan yang humanis, responsif, dan berkeadilan."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visi, Misi & Tugas -->
+                <div class="md:col-span-7 lg:col-span-7 space-y-6">
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-eye"></i> VISI KAMI
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Menjadi institusi kepolisian yang profesional, modern, dan terpercaya demi terwujudnya keamanan dan ketertiban masyarakat di wilayah hukum Kota Bitung.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye"></i> MISI UTAMA
+                        </h3>
+                        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+                            <li class="flex items-start gap-2 bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                                <i class="fa-solid fa-check text-yellow-400 mt-1"></i>
+                                <span>Menjaga dan memelihara keamanan & ketertiban masyarakat Bitung.</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                                <i class="fa-solid fa-check text-yellow-400 mt-1"></i>
+                                <span>Menegakkan hukum secara adil, transparan, dan profesional.</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                                <i class="fa-solid fa-check text-yellow-400 mt-1"></i>
+                                <span>Meningkatkan kualitas pelayanan publik berbasis teknologi informasi.</span>
+                            </li>
+                            <li class="flex items-start gap-2 bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                                <i class="fa-solid fa-check text-yellow-400 mt-1"></i>
+                                <span>Memberdayakan peran serta aktif masyarakat dalam Kamtibmas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ LAYANAN PUBLIK INTERAKTIF ============ -->
+    <section id="layanan" class="py-20 bg-slate-900 border-b border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-yellow-400 text-xs font-bold tracking-widest uppercase">Kemudahan Akses</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Layanan Publik Integrasi</h2>
+                <p class="text-slate-400 text-sm mt-2">Pilih jenis pelayanan kepolisian yang Anda butuhkan</p>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+                <button onclick="switchTab('skck')" id="tab-skck" class="layanan-tab active p-4 rounded-xl bg-slate-800 border border-yellow-500 text-center hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-id-card text-2xl text-yellow-400 mb-2"></i>
+                    <h4 class="font-bold text-sm text-white">SKCK Online</h4>
+                    <p class="text-[10px] text-slate-400">Surat Keterangan Catatan Kepolisian</p>
+                </button>
+                <button onclick="switchTab('sim')" id="tab-sim" class="layanan-tab p-4 rounded-xl bg-slate-800 border border-slate-700 text-center hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-address-card text-2xl text-yellow-400 mb-2"></i>
+                    <h4 class="font-bold text-sm text-white">Layanan SIM</h4>
+                    <p class="text-[10px] text-slate-400">Satpas Polres Bitung</p>
+                </button>
+                <button onclick="switchTab('spkt')" id="tab-spkt" class="layanan-tab p-4 rounded-xl bg-slate-800 border border-slate-700 text-center hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-handshake-angle text-2xl text-yellow-400 mb-2"></i>
+                    <h4 class="font-bold text-sm text-white">SPKT & Kehilangan</h4>
+                    <p class="text-[10px] text-slate-400">Laporan & Pengaduan</p>
+                </button>
+                <button onclick="switchTab('izin')" id="tab-izin" class="layanan-tab p-4 rounded-xl bg-slate-800 border border-slate-700 text-center hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-bullhorn text-2xl text-yellow-400 mb-2"></i>
+                    <h4 class="font-bold text-sm text-white">Izin Keramaian</h4>
+                    <p class="text-[10px] text-slate-400">Kegiatan & Acara Publik</p>
+                </button>
+                <button onclick="switchTab('pengawalan')" id="tab-pengawalan" class="layanan-tab p-4 rounded-xl bg-slate-800 border border-slate-700 text-center hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-car-on text-2xl text-yellow-400 mb-2"></i>
+                    <h4 class="font-bold text-sm text-white">Pengawalan</h4>
+                    <p class="text-[10px] text-slate-400">Sat Lantas & Sabhara</p>
+                </button>
+            </div>
+
+            <div class="bg-slate-950 p-6 md:p-8 rounded-2xl border border-slate-800">
+                <div id="content-skck" class="tab-content">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">Persyaratan SKCK (Surat Keterangan Catatan Kepolisian)</h3>
+                    <p class="text-slate-300 text-sm mb-4">Pelayanan penerbitan SKCK dibuka jam kerja operasional (Senin - Jumat: 08.00 - 15.00 WITA).</p>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-300">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <h4 class="font-bold text-white mb-2"><i class="fa-solid fa-folder-open text-yellow-400 mr-2"></i>Dokumen Persyaratan:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs text-slate-400">
+                                <li>Fotokopi KTP / KK Kota Bitung</li>
+                                <li>Fotokopi Akte Kelahiran / Ijazah Terakhir</li>
+                                <li>Pasfoto 4x6 latar merah (4 lembar)</li>
+                                <li>Rumus Sidik Jari dari Unit Inafis</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <h4 class="font-bold text-white mb-2"><i class="fa-solid fa-circle-info text-yellow-400 mr-2"></i>Biaya Tarik PNBP:</h4>
+                            <p class="text-xs text-slate-400 mb-2">Sesuai PP No. 76 Tahun 2020: <strong>Rp 30.000,-</strong></p>
+                            <a href="https://skck.polri.go.id" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg transition">
+                                Daftar SKCK Online Polri <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-sim" class="tab-content hidden">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">Layanan Penerbitan & Perpanjangan SIM</h3>
+                    <p class="text-slate-300 text-sm mb-4">Lokasi: Satpas Sat Lantas Polres Bitung.</p>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-300">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <h4 class="font-bold text-white mb-2"><i class="fa-solid fa-file-shield text-yellow-400 mr-2"></i>Syarat Perpanjangan:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-xs text-slate-400">
+                                <li>SIM Lama yang masih berlaku</li>
+                                <li>Fotokopi KTP Asli</li>
+                                <li>Surat Keterangan Sehat Jasmani & Psikologi</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <h4 class="font-bold text-white mb-2"><i class="fa-solid fa-clock text-yellow-400 mr-2"></i>Jam Pelayanan:</h4>
+                            <p class="text-xs text-slate-400">Senin - Kamis: 08.00 - 14.00 WITA<br>Jumat: 08.00 - 11.30 WITA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-spkt" class="tab-content hidden">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">Sentra Pelayanan Kepolisian Terpadu (SPKT)</h3>
+                    <p class="text-slate-300 text-sm mb-3">Melayani penerimaan Laporan Polisi (LP) dan Surat Tanda Penerimaan Laporan Kehilangan (STPLK) 24 Jam Bebas Biaya (Gratis).</p>
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-xs text-slate-400">
+                        <p class="font-bold text-white mb-1">Dokumen pendukung Laporan Kehilangan (KTP/ATM/STNK):</p>
+                        <p>Membawa identitas diri KTP dan pengantar/surat keterangan dokumen yang hilang.</p>
+                    </div>
+                </div>
+
+                <div id="content-izin" class="tab-content hidden">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">Perizinan Keramaian & Acara Publik</h3>
+                    <p class="text-slate-300 text-sm mb-3">Pengurusan izin kegiatan masyarakat yang mengumpulkan kerumunan orang banyak.</p>
+                    <p class="text-xs text-slate-400">Permohonan diajukan minimal 7 hari sebelum pelaksanaan kegiatan dengan melampirkan proposal kegiatan dan persetujuan lingkungan setempat.</p>
+                </div>
+
+                <div id="content-pengawalan" class="tab-content hidden">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">Permohonan Pengawalan & Pengamanan</h3>
+                    <p class="text-slate-300 text-sm mb-3">Layanan pengawalan jalan raya untuk kegiatan penting, event publik, dan kegiatan kemanusiaan/ambulans.</p>
+                    <p class="text-xs text-slate-400">Silakan ajukan surat permohonan pengawalan yang ditujukan kepada Kapolres Bitung / Kasat Lantas Polres Bitung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TIM TARSIUS 86 SECTION ============ -->
+    <section id="tarsius" class="py-20 bg-slate-950 border-b border-slate-800 relative overflow-hidden">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-yellow-500/40 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 text-yellow-400 px-3 py-1 rounded-md text-xs font-bold">
+                            <i class="fa-solid fa-shield-cat"></i> TIM PATROLI PRESISI
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white">TIM TARSIUS 86 POLRES BITUNG</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Tim khusus penindak kejahatan dan patroli cegah kriminalitas malam Polres Bitung. Bertugas menjaga stabilitas keamanan serta merespons cepat setiap pengaduan tindak pidana di wilayah Kota Bitung.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-4">
+                            <a href="https://facebook.com/tarsiusreborn" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 transition">
+                                <i class="fa-brands fa-facebook"></i> Official Facebook Tarsius
+                            </a>
+                            <a href="#pengaduan" class="bg-slate-800 hover:bg-slate-700 text-yellow-400 border border-yellow-500/30 font-semibold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 transition">
+                                <i class="fa-solid fa-bell"></i> Laporkan Kejadian Khusus
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 text-center">
+                        <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl shadow-inner">
+                            <i class="fa-solid fa-user-ninja text-6xl text-yellow-400 mb-3"></i>
+                            <h4 class="font-bold text-white text-lg">HOTLINE PATROLI TARSIUS</h4>
+                            <p class="text-xs text-slate-400 mb-4">Siap Bergerak 24 Jam Cepat & Terukur</p>
+                            <a href="tel:110" class="inline-block w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition shadow-lg">
+                                <i class="fa-solid fa-phone"></i> HUBUNGI SEGERA (110)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ POLSEK JAJARAN ============ -->
+    <section id="polsek" class="py-20 bg-slate-900 border-b border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-yellow-400 text-xs font-bold tracking-widest uppercase">Wilayah Hukum</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Polsek Jajaran Polres Bitung</h2>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek Maesa</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Kecamatan Maesa & Madidir, Kota Bitung</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 31300</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Bitung Barat, Maesa</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek Matuari</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Kecamatan Matuari & Girian, Bitung</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 35110</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Manembo-nembo, Bitung</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek Lembeh</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Pulau Lembeh Utara & Selatan</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 32210</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Papusungan, Lembeh</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-anchor"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek KPD Pelabuhan</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Kawasan Pelabuhan Samudera Bitung</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 21500</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Kompleks Pelabuhan Bitung</p>
+                    </div>
+                </div><div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-anchor"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek Aertembaga</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Kecamatan Aertembaga</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 21500</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Winenet Satu</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BERITA & INFORMASI (DINAMIS CMS ADMIN) ============ -->
+    <section id="berita" class="py-20 bg-slate-950 border-b border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-yellow-400 text-xs font-bold tracking-widest uppercase">Kamtibmas Updates</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1">Berita & Edukasi Terbaru</h2>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="public-news-container">
+                <!-- Berita dirender dinamis via JavaScript CMS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FORM PENGADUAN & CEK STATUS TIKET ============ -->
+    <section id="pengaduan" class="py-20 bg-slate-900 border-b border-slate-800 relative">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <span class="text-yellow-400 text-xs font-bold tracking-widest uppercase">Layanan Pengaduan Masyarakat</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Pengaduan Online Presisi</h2>
+                <p class="text-slate-400 text-sm mt-2">Sampaikan laporan Anda secara cepat, transparan, dan terlindungi</p>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Tracker Status Box -->
+            <div class="bg-slate-950 p-6 rounded-2xl border border-yellow-500/40 shadow-xl mb-10">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass text-yellow-400"></i> Lacak Status Pengaduan Anda
+                </h3>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="inputTicketCode" placeholder="Masukkan Nomor Tiket Pengaduan (cth: BITUNG-XXXXX)" class="flex-1 bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-yellow-500">
+                    <button onclick="lacalPengaduan()" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-sm transition">
+                        Cek Tiket
+                    </button>
+                </div>
+                <div id="trackerResult" class="hidden mt-4 p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs"></div>
+            </div>
+
+            <!-- Form Pengaduan Baru -->
+            <div class="bg-slate-950 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl">
+                <h3 class="text-lg font-bold text-white mb-6 border-b border-slate-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-nib text-yellow-400"></i> Form Formulir Pengaduan
+                </h3>
+
+                <form onsubmit="event.preventDefault(); simpanPengaduan();" class="space-y-5">
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Nama Lengkap Pelapor *</label>
+                            <input type="text" id="nama" placeholder="Sesuai KTP" required class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Nomor HP / WhatsApp *</label>
+                            <input type="tel" id="hp" placeholder="08xxxxxxxxxx" required class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Isi Laporan Detail *</label>
+                        <textarea id="isi" rows="4" placeholder="Jelaskan kronologi kejadian secara lengkap..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500"></textarea>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-between">
+                        <p class="text-[11px] text-slate-500">* Identitas Anda akan dirahasiakan sesuai ketentuan hukum yang berlaku.</p>
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold px-8 py-3 rounded-xl transition shadow-lg shadow-yellow-500/20 flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Laporan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       PROTECTED PANEL ADMIN (HANYA MUNCUL SETELAH LOGIN)
+       ========================================================================== -->
+    <section id="admin-protected-panel" class="py-16 bg-slate-950 border-t-4 border-yellow-500 hidden">
+        <div class="container mx-auto px-4 max-w-6xl space-y-12">
+            
+            <!-- CMS BERITA -->
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper"></i> CMS Admin: Tambah / Update Berita Website
+                </h2>
+                <form onsubmit="event.preventDefault(); simpanBerita();" class="space-y-4">
+                    <input type="hidden" id="edit-index" value="-1">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Judul Berita</label>
+                        <input type="text" id="news-title" placeholder="Judul kegiatan / pengumuman..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Isi Berita Kompleks</label>
+                        <textarea id="news-content" rows="4" placeholder="Tulis isi berita lengkap..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500"></textarea>
+                    </div>
+                    <div class="flex gap-3">
+                        <button type="submit" id="btn-save-news" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-sm transition">
+                            Publikasikan Berita
+                        </button>
+                        <button type="button" onclick="resetFormBerita()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-6 py-2.5 rounded-xl text-sm transition">
+                            Batal
+                        </button>
+                    </div>
+                </form>
+
+                <h3 class="text-base font-bold text-white mt-8 mb-3">Daftar Berita Yang Sudah Dipublikasi:</h3>
+                <div id="admin-news-list" class="space-y-2"></div>
+            </div>
+
+            <!-- REKAP DATA PENGADUAN ADMIN (STATUS CONTROL) -->
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                    <h2 class="text-2xl font-bold text-red-500 flex items-center gap-2">
+                        <i class="fa-solid fa-database"></i> Kelola Data Pengaduan Masuk
+                    </h2>
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-bold text-slate-300">Filter Status:</label>
+                        <select id="filter-status" onchange="muatDataAdmin()" class="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg p-2 font-bold">
+                            <option value="Semua">Semua Laporan</option>
+                            <option value="Belum Selesai">🔴 Belum Selesai</option>
+                            <option value="Diproses">🟡 Diproses</option>
+                            <option value="Selesai">🟢 Selesai</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-950 text-slate-400 uppercase font-bold text-[10px]">
+                            <tr>
+                                <th class="p-3">Tiket</th>
+                                <th class="p-3">Waktu</th>
+                                <th class="p-3">Pelapor</th>
+                                <th class="p-3">No. HP</th>
+                                <th class="p-3">Isi Laporan</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Aksi Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel-admin-body" class="divide-y divide-slate-800"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ FOOTER & KONTAK ============ -->
+    <footer id="kontak" class="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center text-slate-950 font-black">
+                            PB
+                        </div>
+                        <h3 class="font-extrabold text-white text-lg">POLRES BITUNG</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        Kepolisian Resor Bitung - Polda Sulawesi Utara. Melindungi, Mengayomi, dan Melayani Masyarakat Kota Bitung.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 border-l-2 border-yellow-500 pl-2">Alamat Markas</h4>
+                    <p class="text-xs leading-relaxed text-slate-400 mb-2">
+                        Jl. Tomohon - Tanahwangko, Girian Weru Dua, Kec. Girian, Kota Bitung, Sulawesi Utara 95354
+                    </p>
+                    <p class="text-xs text-yellow-400"><i class="fa-solid fa-phone mr-1"></i> (0438) 30760</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 border-l-2 border-yellow-500 pl-2">Navigasi Cepat</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="#beranda" class="hover:text-yellow-400 transition">Beranda Utama</a></li>
+                        <li><a href="#profil" class="hover:text-yellow-400 transition">Visi & Misi Kapolres</a></li>
+                        <li><a href="#layanan" class="hover:text-yellow-400 transition">Persyaratan SKCK & SIM</a></li>
+                        <li><a href="#tarsius" class="hover:text-yellow-400 transition">Patroli Tim Tarsius 86</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 border-l-2 border-yellow-500 pl-2">Jam Pelayanan SPKT</h4>
+                    <p class="text-xs text-slate-400 mb-2">SPKT Polres Bitung Siaga 24 Jam Nonstop</p>
+                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                        <p class="text-[11px] text-yellow-400 font-bold"><i class="fa-solid fa-clock mr-1"></i> DARURAT & LAPORAN: 24 JAM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>© 2026 Kepolisian Resor Bitung. All Rights Reserved.</p>
+                <p class="text-[11px]">PRESISI - Prediktif, Responsif, Transparansi Berkeadilan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ MODAL LOGIN ADMIN ============ -->
+    <div id="loginModalAdmin" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl">
+            <h3 class="text-xl font-bold text-yellow-400 text-center mb-4">🔐 Login Petugas Admin</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Username</label>
+                    <input type="text" id="adminUser" placeholder="admin" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Password</label>
+                    <input type="password" id="adminPass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500">
+                </div>
+                <button onclick="prosesLoginAdmin()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg">
+                    Masuk Ke System Admin
+                </button>
+                <button onclick="tutupModalLoginAdmin()" class="w-full bg-slate-800 text-slate-300 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-700">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TOAST NOTIFICATION ============ -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-800 border-l-4 border-yellow-500 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-yellow-400 text-lg" id="toastIcon"></i>
+            <div>
+                <h4 class="font-bold text-xs text-white" id="toastTitle">Notifikasi</h4>
+                <p class="text-xs text-slate-300" id="toastMessage">Pesan berhasil disampaikan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ JAVASCRIPT LOGIC LENGKAP ============ -->
+    <script>
+        // Default Berita jika belum tersimpan
+        if (!localStorage.getItem("news_db")) {
+            localStorage.setItem("news_db", JSON.stringify([
+                { title: "Operasi Simpatik Sat Lantas Polres Bitung", content: "Satuan Lalu Lintas Polres Bitung mengedepankan tindakan simpatik dan edukatif kepada pengguna jalan.", date: "24 Okt 2026" },
+                { title: "Personel Polres Bitung Sabet Emas Porprov", content: "Tiga personel Polres Bitung berhasil mengukir prestasi membanggakan pada ajang kejuaraan olahraga.", date: "18 Okt 2026" }
+            ]));
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            muatBeritaPublik();
+            cekStatusSesi();
+        });
+
+        // 1. SISTEM AUTHENTICATION LOGIN / LOGOUT ADMIN
+        function bukaModalLoginAdmin() {
+            document.getElementById("loginModalAdmin").classList.remove("hidden");
+        }
+
+        function tutupModalLoginAdmin() {
+            document.getElementById("loginModalAdmin").classList.add("hidden");
+        }
+
+        function prosesLoginAdmin() {
+            const u = document.getElementById("adminUser").value.trim();
+            const p = document.getElementById("adminPass").value.trim();
+
+            if (u === "admin" && p === "polresbitung2026") {
+                localStorage.setItem("isLogin", "true");
+                tutupModalLoginAdmin();
+                cekStatusSesi();
+                showToast("Login Berhasil", "Selamat datang Admin Polres Bitung.");
+            } else {
+                showToast("Gagal Login", "Username atau Password salah!", "error");
+            }
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem("isLogin");
+            cekStatusSesi();
+            showToast("Logout Berhasil", "Anda telah keluar dari akun admin.");
+            window.location.href = "#beranda";
+        }
+
+        function cekStatusSesi() {
+            const isLogin = localStorage.getItem("isLogin");
+            const protectedPanel = document.getElementById("admin-protected-panel");
+            const navAuthButtons = document.getElementById("nav-auth-buttons");
+            const mobileAuthContainer = document.getElementById("mobile-auth-container");
+
+            if (isLogin === "true") {
+                protectedPanel.classList.remove("hidden");
+                navAuthButtons.innerHTML = `
+                    <a href="#admin-protected-panel" class="px-3 py-1.5 rounded-lg bg-yellow-500 text-slate-950 font-extrabold text-xs">
+                        🛠️ Panel Admin CMS
+                    </a>
+                    <button onclick="logoutAdmin()" class="px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-bold hover:bg-red-700">
+                        Logout
+                    </button>
+                `;
+                mobileAuthContainer.innerHTML = `
+                    <a href="#admin-protected-panel" onclick="toggleMobileMenu()" class="block text-center py-2 bg-yellow-500 text-slate-950 font-bold rounded-lg text-xs">
+                        Panel Admin CMS
+                    </a>
+                    <button onclick="logoutAdmin()" class="w-full text-center py-2 bg-red-600 text-white rounded-lg text-xs font-bold">
+                        Logout
+                    </button>
+                `;
+                muatBeritaAdmin();
+                muatDataAdmin();
+            } else {
+                protectedPanel.classList.add("hidden");
+                navAuthButtons.innerHTML = `
+                    <button onclick="bukaModalLoginAdmin()" class="px-3.5 py-1.5 rounded-lg border border-yellow-500/50 bg-yellow-500/10 text-yellow-400 text-xs font-bold hover:bg-yellow-500 hover:text-slate-950 transition">
+                        <i class="fa-solid fa-lock mr-1"></i> Login Admin
+                    </button>
+                `;
+                mobileAuthContainer.innerHTML = `
+                    <button onclick="bukaModalLoginAdmin()" class="w-full text-center py-2 bg-yellow-500/20 text-yellow-400 rounded-lg text-xs font-bold">
+                        Login Admin
+                    </button>
+                `;
+            }
+        }
+
+        // 2. CMS BERITA (TAMBAH, EDIT, HAPUS)
+        function getBeritaData() {
+            return JSON.parse(localStorage.getItem("news_db")) || [];
+        }
+
+        function simpanBerita() {
+            const title = document.getElementById("news-title").value.trim();
+            const content = document.getElementById("news-content").value.trim();
+            const editIndex = document.getElementById("edit-index").value;
+            let list = getBeritaData();
+
+            const dateStr = new Date().toLocaleDateString("id-ID", { day: 'numeric', month: 'short', year: 'numeric' });
+
+            if (editIndex === "-1") {
+                list.unshift({ title, content, date: dateStr });
+            } else {
+                list[editIndex].title = title;
+                list[editIndex].content = content;
+                document.getElementById("edit-index").value = "-1";
+                document.getElementById("btn-save-news").innerText = "Publikasikan Berita";
+            }
+
+            localStorage.setItem("news_db", JSON.stringify(list));
+            resetFormBerita();
+            muatBeritaPublik();
+            muatBeritaAdmin();
+            showToast("Berita Disimpan", "Berita berhasil dipublikasikan di halaman depan.");
+        }
+
+        function muatBeritaPublik() {
+            const container = document.getElementById("public-news-container");
+            const list = getBeritaData();
+            container.innerHTML = "";
+
+            if (list.length === 0) {
+                container.innerHTML = "<p class='text-slate-400 text-xs'>Belum ada berita dipublikasikan.</p>";
+                return;
+            }
+
+            list.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-yellow-400 font-bold bg-yellow-500/10 border border-yellow-500/30 px-2 py-0.5 rounded inline-block mb-2">${item.date}</span>
+                            <h3 class="font-bold text-white text-base mb-2">${item.title}</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">${item.content}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function muatBeritaAdmin() {
+            const container = document.getElementById("admin-news-list");
+            const list = getBeritaData();
+            container.innerHTML = "";
+
+            list.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-white">${item.title}</span>
+                            <span class="text-slate-500 text-[10px] block">${item.date}</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="editBerita(${index})" class="bg-yellow-500 text-slate-950 font-bold px-3 py-1 rounded">Edit</button>
+                            <button onclick="hapusBerita(${index})" class="bg-red-600 text-white font-bold px-3 py-1 rounded">Hapus</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function editBerita(index) {
+            const list = getBeritaData();
+            document.getElementById("news-title").value = list[index].title;
+            document.getElementById("news-content").value = list[index].content;
+            document.getElementById("edit-index").value = index;
+            document.getElementById("btn-save-news").innerText = "Update Berita";
+        }
+
+        function hapusBerita(index) {
+            if (confirm("Hapus berita ini?")) {
+                let list = getBeritaData();
+                list.splice(index, 1);
+                localStorage.setItem("news_db", JSON.stringify(list));
+                muatBeritaPublik();
+                muatBeritaAdmin();
+            }
+        }
+
+        function resetFormBerita() {
+            document.getElementById("news-title").value = "";
+            document.getElementById("news-content").value = "";
+            document.getElementById("edit-index").value = "-1";
+            document.getElementById("btn-save-news").innerText = "Publikasikan Berita";
+        }
+
+        // 3. MANAJEMEN PENGADUAN & STATUS (BELUM / DIPROSES / SELESAI)
+        function getPengaduanData() {
+            return JSON.parse(localStorage.getItem("pengaduan_db")) || [];
+        }
+
+        function simpanPengaduan() {
+            const nama = document.getElementById("nama").value.trim();
+            const hp = document.getElementById("hp").value.trim();
+            const isi = document.getElementById("isi").value.trim();
+
+            if (!nama || !hp || !isi) {
+                showToast("Peringatan", "Harap isi seluruh kolom pengaduan!", "error");
+                return;
+            }
+
+            const tiket = "BITUNG-" + Math.random().toString(36).substr(2, 5).toUpperCase();
+            const waktu = new Date().toLocaleString("id-ID");
+
+            const laporan = { tiket, nama, hp, isi, waktu, status: "Belum Selesai" };
+            let daftar = getPengaduanData();
+            daftar.unshift(laporan);
+            localStorage.setItem("pengaduan_db", JSON.stringify(daftar));
+
+            showToast("Laporan Berhasil!", `KODE TIKET: ${tiket}`);
+
+            document.getElementById("nama").value = "";
+            document.getElementById("hp").value = "";
+            document.getElementById("isi").value = "";
+
+            document.getElementById("inputTicketCode").value = tiket;
+            lacalPengaduan();
+
+            if (localStorage.getItem("isLogin") === "true") muatDataAdmin();
+        }
+
+        function muatDataAdmin() {
+            const tbody = document.getElementById("tabel-admin-body");
+            const filter = document.getElementById("filter-status").value;
+            const daftar = getPengaduanData();
+            tbody.innerHTML = "";
+
+            if (daftar.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Belum ada pengaduan masuk.</td></tr>`;
+                return;
+            }
+
+            daftar.forEach((item) => {
+                if (filter !== "Semua" && item.status !== filter) return;
+
+                let badgeColor = item.status === "Selesai" ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/40" : (item.status === "Diproses" ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" : "bg-red-500/20 text-red-400 border-red-500/40");
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-800/50">
+                        <td class="p-3 font-mono font-bold text-yellow-400">${item.tiket}</td>
+                        <td class="p-3 text-slate-400">${item.waktu}</td>
+                        <td class="p-3 text-white font-semibold">${item.nama}</td>
+                        <td class="p-3">${item.hp}</td>
+                        <td class="p-3 max-w-xs truncate">${item.isi}</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeColor}">${item.status}</span></td>
+                        <td class="p-3 flex items-center gap-2">
+                            <select onchange="ubahStatus('${item.tiket}', this.value)" class="bg-slate-950 border border-slate-700 text-white rounded p-1 text-xs">
+                                <option value="Belum Selesai" ${item.status === 'Belum Selesai' ? 'selected' : ''}>Belum Selesai</option>
+                                <option value="Diproses" ${item.status === 'Diproses' ? 'selected' : ''}>Diproses</option>
+                                <option value="Selesai" ${item.status === 'Selesai' ? 'selected' : ''}>Selesai</option>
+                            </select>
+                            <button onclick="hapusPengaduan('${item.tiket}')" class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-[10px] font-bold">Hapus</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function ubahStatus(tiket, statusBaru) {
+            let daftar = getPengaduanData();
+            let item = daftar.find(d => d.tiket === tiket);
+            if (item) {
+                item.status = statusBaru;
+                localStorage.setItem("pengaduan_db", JSON.stringify(daftar));
+                showToast("Status Diperbarui", `Tiket ${tiket} diubah menjadi "${statusBaru}"`);
+                muatDataAdmin();
+            }
+        }
+
+        function hapusPengaduan(tiket) {
+            if (confirm(`Hapus pengaduan ${tiket}?`)) {
+                let daftar = getPengaduanData();
+                daftar = daftar.filter(d => d.tiket !== tiket);
+                localStorage.setItem("pengaduan_db", JSON.stringify(daftar));
+                muatDataAdmin();
+            }
+        }
+
+        function lacalPengaduan() {
+            const kode = document.getElementById("inputTicketCode").value.trim().toUpperCase();
+            const resultBox = document.getElementById("trackerResult");
+            const daftar = getPengaduanData();
+
+            if (!kode) {
+                showToast("Peringatan", "Masukkan Kode Tiket!", "error");
+                return;
+            }
+
+            const item = daftar.find(d => d.tiket === kode);
+            resultBox.classList.remove("hidden");
+
+            if (item) {
+                let badgeColor = item.status === "Selesai" ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/40" : (item.status === "Diproses" ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" : "bg-red-500/20 text-red-400 border-red-500/40");
+                resultBox.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-2">
+                            <span class="font-bold text-yellow-400 font-mono">TIKET: ${item.tiket}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeColor}">${item.status}</span>
+                        </div>
+                        <p class="text-slate-300"><strong>Pelapor:</strong> ${item.nama}</p>
+                        <p class="text-slate-300"><strong>Waktu Lapor:</strong> ${item.waktu}</p>
+                        <p class="text-slate-300"><strong>Isi Pengaduan:</strong> "${item.isi}"</p>
+                    </div>
+                `;
+            } else {
+                resultBox.innerHTML = `<p class="text-red-400 font-bold">❌ Kode Tiket "${kode}" tidak ditemukan di sistem.</p>`;
+            }
+        }
+
+        // UTILITY
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.layanan-tab').forEach(el => {
+                el.classList.remove('border-yellow-500', 'bg-slate-800');
+                el.classList.add('border-slate-700', 'bg-slate-800');
+            });
+
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabName}`).classList.add('border-yellow-500');
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById("toastNotification");
+            document.getElementById("toastTitle").innerText = title;
+            document.getElementById("toastMessage").innerText = message;
+            
+            toast.classList.remove("translate-y-20", "opacity-0");
+            setTimeout(() => {
+                toast.classList.add("translate-y-20", "opacity-0");
+            }, 3500);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById("mobileMenu").classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>
