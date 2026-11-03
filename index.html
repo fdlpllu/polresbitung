@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POLRES BITUNG - Portal Resmi Pelayanan & Sistem Informasi Publik</title>
+    <title id="site-title-tag">POLRES BITUNG - Portal Resmi Pelayanan & Sistem Informasi Publik</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -67,18 +67,17 @@
         </div>
     </div>
 
-  
-   <!-- ============ NAVIGATION BAR ============ -->
+    <!-- ============ NAVIGATION BAR ============ -->
     <nav class="sticky top-0 z-40 bg-polri-navy/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             
             <!-- Brand Logo & Title -->
             <a href="#beranda" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-slate-800 border border-yellow-500/40 rounded-xl overflow-hidden shadow-md group-hover:border-yellow-400 transition">
-                    <img src="Logo.png" alt="Logo Polres" class="w-full h-full object-cover">
+                    <img id="app-logo" src="Logo.png" alt="Logo Polres" class="w-full h-full object-cover">
                 </div>
                 <div>
-                    <h1 class="font-extrabold text-base md:text-lg tracking-wider text-white leading-none">POLRES BITUNG</h1>
+                    <h1 id="app-name" class="font-extrabold text-base md:text-lg tracking-wider text-white leading-none">POLRES BITUNG</h1>
                     <p class="text-[9px] md:text-[10px] text-yellow-400 font-medium tracking-widest uppercase">Polda Sulawesi Utara</p>
                 </div>
             </a>
@@ -100,11 +99,6 @@
                     <i class="fa-solid fa-lock mr-1"></i> Login Admin
                 </button>
             </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-slate-300 hover:text-white p-2">
-                <i class="fa-solid fa-bars" id="menuIcon"></i>
-            </button>
         </div>
     </nav>
 
@@ -156,7 +150,7 @@
         </div>
     </section>
 
-<!-- ============ PROFIL & KAPOLRES SECTION ============ -->
+    <!-- ============ PROFIL & KAPOLRES SECTION ============ -->
     <section id="profil" class="py-20 bg-slate-950 border-b border-slate-800">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -165,18 +159,17 @@
                 <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
             </div>
 
-            <!-- PERUBAHAN UTAMA: Ditambahkan justify-center agar elemen berada di tengah -->
             <div class="grid md:grid-cols-12 gap-8 items-center justify-center max-w-5xl mx-auto">
-                <!-- Kapolres Card (Dibuat agar posisinya center) -->
+                <!-- Kapolres Card (Dibuat dinamis agar bisa diganti via CMS Admin) -->
                 <div class="md:col-span-5 lg:col-span-5 flex justify-center">
                     <div class="bg-slate-900 p-6 rounded-2xl border border-yellow-500/30 text-center shadow-xl relative overflow-hidden group w-full max-w-sm">
                         <div class="absolute top-0 right-0 bg-yellow-500 text-slate-950 text-[10px] font-bold px-3 py-1 rounded-bl-lg">KAPOLRES BITUNG</div>
                         <div class="w-40 h-40 mx-auto rounded-full bg-slate-800 border-4 border-yellow-500/50 overflow-hidden mb-4 shadow-inner flex items-center justify-center">
-                            <img src="Kapolres.jpeg" alt="Kapolres Bitung" class="w-full h-full object-cover object-top">
+                            <img id="view-kapolres-foto" src="Kapolres.jpeg" alt="Kapolres Bitung" class="w-full h-full object-cover object-top">
                         </div>
-                        <h3 class="text-lg font-bold text-white">AKBP Arie Sulistyo Nugroho, S.I.K., M.H.</h3>
+                        <h3 id="view-kapolres-nama" class="text-lg font-bold text-white">AKBP Arie Sulistyo Nugroho, S.I.K., M.H.</h3>
                         <p class="text-xs text-yellow-400 font-semibold mb-3">Kapolres Bitung</p>
-                        <p class="text-slate-400 text-xs italic leading-relaxed bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <p id="view-kapolres-sambutan" class="text-slate-400 text-xs italic leading-relaxed bg-slate-950 p-3 rounded-xl border border-slate-800">
                             "Siap mewujudkan kamtibmas yang kondusif di Kota Bitung melalui pelayanan yang humanis, responsif, dan berkeadilan."
                         </p>
                     </div>
@@ -220,6 +213,7 @@
             </div>
         </div>
     </section>
+
     <!-- ============ LAYANAN PUBLIK INTERAKTIF ============ -->
     <section id="layanan" class="py-20 bg-slate-900 border-b border-slate-800">
         <div class="container mx-auto px-4">
@@ -413,22 +407,32 @@
                     <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
                         <i class="fa-solid fa-anchor"></i>
                     </div>
-                    <h3 class="font-bold text-white text-base">Polsek KPD Pelabuhan</h3>
+                    <h3 class="font-bold text-white text-base">Polsek KPS Pelabuhan</h3>
                     <p class="text-xs text-slate-400 mt-2 mb-4">Kawasan Pelabuhan Samudera Bitung</p>
                     <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
                         <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 21500</p>
                         <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Kompleks Pelabuhan Bitung</p>
                     </div>
-                </div><div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                </div> <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
                     <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
                         <i class="fa-solid fa-anchor"></i>
                     </div>
                     <h3 class="font-bold text-white text-base">Polsek Aertembaga</h3>
-                    <p class="text-xs text-slate-400 mt-2 mb-4">Kecamatan Aertembaga</p>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Winenet Satu,Aertembaga</p>
                     <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
                         <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 21500</p>
                         <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Winenet Satu</p>
-            </div>
+                    </div>
+            </div> <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-yellow-500/50 transition">
+                    <div class="w-10 h-10 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+                        <i class="fa-solid fa-anchor"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Polsek Ranowulu</h3>
+                    <p class="text-xs text-slate-400 mt-2 mb-4">Ranowulu,Pinokalan</p>
+                    <div class="text-xs space-y-1 text-slate-300 border-t border-slate-800 pt-3">
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i> (0438) 21500</p>
+                        <p class="truncate"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i> Raya Danowudu No.1, Pinokalan, Ranowulu,</p>
+                    </div>
         </div>
     </section>
 
@@ -513,6 +517,40 @@
     <section id="admin-protected-panel" class="py-16 bg-slate-950 border-t-4 border-yellow-500 hidden">
         <div class="container mx-auto px-4 max-w-6xl space-y-12">
             
+            <!-- CMS PENGATURAN IDENTITAS WEBSITE & KAPOLRES -->
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders"></i> CMS Admin: Ubah Identitas Website & Kapolres
+                </h2>
+                <form onsubmit="event.preventDefault(); simpanPengaturanWebsite();" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nama Instansi / Website</label>
+                        <input type="text" id="cfg-app-name" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nama File / URL Logo</label>
+                        <input type="text" id="cfg-app-logo" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nama & Gelar Kapolres</label>
+                        <input type="text" id="cfg-kapolres-nama" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nama File / URL Foto Kapolres</label>
+                        <input type="text" id="cfg-kapolres-foto" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Teks Sambutan Pimpinan</label>
+                        <textarea id="cfg-kapolres-sambutan" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-yellow-500" required></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition">
+                            Simpan Perubahan Identitas Website
+                        </button>
+                    </div>
+                </form>
+            </div>
+
             <!-- CMS BERITA -->
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-2xl">
                 <h2 class="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-2">
@@ -666,7 +704,15 @@
 
     <!-- ============ JAVASCRIPT LOGIC LENGKAP ============ -->
     <script>
-        // Default Berita jika belum tersimpan
+        // Default Config Identitas Website
+        const defaultConfig = {
+            appName: "POLRES BITUNG",
+            appLogo: "Logo.png",
+            kapolresNama: "AKBP Arie Sulistyo Nugroho, S.I.K., M.H.",
+            kapolresFoto: "Kapolres.jpeg",
+            kapolresSambutan: "Siap mewujudkan kamtibmas yang kondusif di Kota Bitung melalui pelayanan yang humanis, responsif, dan berkeadilan."
+        };
+
         if (!localStorage.getItem("news_db")) {
             localStorage.setItem("news_db", JSON.stringify([
                 { title: "Operasi Simpatik Sat Lantas Polres Bitung", content: "Satuan Lalu Lintas Polres Bitung mengedepankan tindakan simpatik dan edukatif kepada pengguna jalan.", date: "24 Okt 2026" },
@@ -675,9 +721,42 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            muatKonfigurasiWebsite();
             muatBeritaPublik();
             cekStatusSesi();
         });
+
+        // LOAD & SAVE CONFIG WEBSITE (CMS IDENTITAS & KAPOLRES)
+        function muatKonfigurasiWebsite() {
+            const cfg = JSON.parse(localStorage.getItem("site_cfg")) || defaultConfig;
+
+            if(document.getElementById("site-title-tag")) document.getElementById("site-title-tag").innerText = cfg.appName + " - Portal Resmi";
+            if(document.getElementById("app-name")) document.getElementById("app-name").innerText = cfg.appName;
+            if(document.getElementById("app-logo")) document.getElementById("app-logo").src = cfg.appLogo;
+            if(document.getElementById("view-kapolres-nama")) document.getElementById("view-kapolres-nama").innerText = cfg.kapolresNama;
+            if(document.getElementById("view-kapolres-foto")) document.getElementById("view-kapolres-foto").src = cfg.kapolresFoto;
+            if(document.getElementById("view-kapolres-sambutan")) document.getElementById("view-kapolres-sambutan").innerText = `"${cfg.kapolresSambutan}"`;
+
+            if(document.getElementById("cfg-app-name")) document.getElementById("cfg-app-name").value = cfg.appName;
+            if(document.getElementById("cfg-app-logo")) document.getElementById("cfg-app-logo").value = cfg.appLogo;
+            if(document.getElementById("cfg-kapolres-nama")) document.getElementById("cfg-kapolres-nama").value = cfg.kapolresNama;
+            if(document.getElementById("cfg-kapolres-foto")) document.getElementById("cfg-kapolres-foto").value = cfg.kapolresFoto;
+            if(document.getElementById("cfg-kapolres-sambutan")) document.getElementById("cfg-kapolres-sambutan").value = cfg.kapolresSambutan;
+        }
+
+        function simpanPengaturanWebsite() {
+            const newCfg = {
+                appName: document.getElementById("cfg-app-name").value.trim(),
+                appLogo: document.getElementById("cfg-app-logo").value.trim(),
+                kapolresNama: document.getElementById("cfg-kapolres-nama").value.trim(),
+                kapolresFoto: document.getElementById("cfg-kapolres-foto").value.trim(),
+                kapolresSambutan: document.getElementById("cfg-kapolres-sambutan").value.trim()
+            };
+
+            localStorage.setItem("site_cfg", JSON.stringify(newCfg));
+            muatKonfigurasiWebsite();
+            showToast("Berhasil Disimpan", "Identitas website dan profil Kapolres telah diperbarui.");
+        }
 
         // 1. SISTEM AUTHENTICATION LOGIN / LOGOUT ADMIN
         function bukaModalLoginAdmin() {
@@ -713,7 +792,6 @@
             const isLogin = localStorage.getItem("isLogin");
             const protectedPanel = document.getElementById("admin-protected-panel");
             const navAuthButtons = document.getElementById("nav-auth-buttons");
-            const mobileAuthContainer = document.getElementById("mobile-auth-container");
 
             if (isLogin === "true") {
                 protectedPanel.classList.remove("hidden");
@@ -725,14 +803,6 @@
                         Logout
                     </button>
                 `;
-                mobileAuthContainer.innerHTML = `
-                    <a href="#admin-protected-panel" onclick="toggleMobileMenu()" class="block text-center py-2 bg-yellow-500 text-slate-950 font-bold rounded-lg text-xs">
-                        Panel Admin CMS
-                    </a>
-                    <button onclick="logoutAdmin()" class="w-full text-center py-2 bg-red-600 text-white rounded-lg text-xs font-bold">
-                        Logout
-                    </button>
-                `;
                 muatBeritaAdmin();
                 muatDataAdmin();
             } else {
@@ -740,11 +810,6 @@
                 navAuthButtons.innerHTML = `
                     <button onclick="bukaModalLoginAdmin()" class="px-3.5 py-1.5 rounded-lg border border-yellow-500/50 bg-yellow-500/10 text-yellow-400 text-xs font-bold hover:bg-yellow-500 hover:text-slate-950 transition">
                         <i class="fa-solid fa-lock mr-1"></i> Login Admin
-                    </button>
-                `;
-                mobileAuthContainer.innerHTML = `
-                    <button onclick="bukaModalLoginAdmin()" class="w-full text-center py-2 bg-yellow-500/20 text-yellow-400 rounded-lg text-xs font-bold">
-                        Login Admin
                     </button>
                 `;
             }
@@ -992,10 +1057,6 @@
             setTimeout(() => {
                 toast.classList.add("translate-y-20", "opacity-0");
             }, 3500);
-        }
-
-        function toggleMobileMenu() {
-            document.getElementById("mobileMenu").classList.toggle("hidden");
         }
     </script>
 </body>
